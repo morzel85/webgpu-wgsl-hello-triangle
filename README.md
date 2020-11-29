@@ -17,3 +17,6 @@ Is it possible to simplify the code further? Teach me how! :)
 ## Test results (2020-11-29):
 - Chrome Canary 89.0.4340.0 (64-bit) on Windows 10 - SUCCESS!
 - Firefox Nightly 85.0a1 (2020-11-29) (64-bit) on Windows 10 - FAILURE!
+
+## Credits
+Code is based on https://github.com/austinEng/webgpu-samples
