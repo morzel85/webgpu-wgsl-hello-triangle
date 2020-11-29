@@ -1,0 +1,83 @@
+(async () => {
+    if (!navigator.gpu) {
+        alert('Your browser does not support WebGPU or it is not enabled. More info: https://webgpu.io');
+        return;
+    }
+
+    const adapter = await navigator.gpu.requestAdapter();
+    const device = await adapter.requestDevice();
+
+    const canvas = document.getElementById('canvas')
+    const context = canvas.getContext('gpupresent');
+
+    const swapChainFormat = 'bgra8unorm';
+
+    const swapChain = context.configureSwapChain({
+        device,
+        format: swapChainFormat
+    });
+
+    const vertexShaderWsglCode = 
+    `
+        const pos : array<vec2<f32>, 3> = array<vec2<f32>, 3>(
+        vec2<f32>(0.0, 0.5),
+        vec2<f32>(-0.5, -0.5),
+        vec2<f32>(0.5, -0.5));
+      
+        [[builtin(position)]] var<out> Position : vec4<f32>;
+        [[builtin(vertex_idx)]] var<in> VertexIndex : i32;
+      
+        [[stage(vertex)]]
+        fn main() -> void {
+            Position = vec4<f32>(pos[VertexIndex], 0.0, 1.0);
+            return;
+        }
+    `;
+
+    const fragmentShaderWsglCode =
+        `
+        [[location(0)]] var<out> outColor : vec4<f32>;
+      
+        [[stage(fragment)]]
+        fn main() -> void {
+            outColor = vec4<f32>(0.0, 1.0, 0.0, 1.0);
+            return;
+        }
+    `;
+
+    const pipeline = device.createRenderPipeline({
+        vertexStage: {
+            module: device.createShaderModule({
+                code: vertexShaderWsglCode
+            }),
+            entryPoint: 'main'
+        },
+        fragmentStage: {
+            module: device.createShaderModule({
+                code: fragmentShaderWsglCode
+            }),
+            entryPoint: 'main'
+        },
+        primitiveTopology: 'triangle-list',
+        colorStates: [{
+            format: swapChainFormat
+        }]
+    });
+
+    const commandEncoder = device.createCommandEncoder();
+    const textureView = swapChain.getCurrentTexture().createView();
+
+    const renderPassDescriptor = {
+        colorAttachments: [{
+            attachment: textureView,
+            loadValue: { r: 0.5, g: 0.5, b: 0.5, a: 1.0 },
+        }]
+    };
+
+    const passEncoder = commandEncoder.beginRenderPass(renderPassDescriptor);
+    passEncoder.setPipeline(pipeline);
+    passEncoder.draw(3, 1, 0, 0);
+    passEncoder.endPass();
+
+    device.defaultQueue.submit([commandEncoder.finish()]);
+})();
