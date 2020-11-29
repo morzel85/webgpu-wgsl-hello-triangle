@@ -4,6 +4,8 @@ An example of how to render a triangle with WebGPU using WebGPU Shading Language
 ## What it does?
 **If your browser supports WebGPU and WGSL**, you should be able to see a gray square with a green triangle in the center. And that's it.
 
+**Live example**: https://morzel85.github.io/webgpu-wgsl-hello-triangle/index.html 
+
 ## WebGPU and WGSL are work in progress!
 Please mind that [WebGPU](https://gpuweb.github.io/gpuweb) and [WGSL](https://gpuweb.github.io/gpuweb/wgsl.html) specs are not finalized and implementations are changing! Visit [webgpu.io](https://webgpu.io) to check current status.
 
