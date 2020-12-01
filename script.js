@@ -17,7 +17,7 @@
         format: swapChainFormat
     });
 
-    const vertexShaderWsglCode = 
+    const vertexShaderWgslCode = 
     `
         const pos : array<vec2<f32>, 3> = array<vec2<f32>, 3>(
         vec2<f32>(0.0, 0.5),
@@ -34,8 +34,8 @@
         }
     `;
 
-    const fragmentShaderWsglCode =
-        `
+    const fragmentShaderWgslCode =
+    `
         [[location(0)]] var<out> outColor : vec4<f32>;
       
         [[stage(fragment)]]
@@ -48,13 +48,13 @@
     const pipeline = device.createRenderPipeline({
         vertexStage: {
             module: device.createShaderModule({
-                code: vertexShaderWsglCode
+                code: vertexShaderWgslCode
             }),
             entryPoint: 'main'
         },
         fragmentStage: {
             module: device.createShaderModule({
-                code: fragmentShaderWsglCode
+                code: fragmentShaderWgslCode
             }),
             entryPoint: 'main'
         },
