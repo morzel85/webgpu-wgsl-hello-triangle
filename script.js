@@ -17,8 +17,8 @@
         format: swapChainFormat
     });
 
-    const vertexShaderWgslCode = 
-    `
+    const vertexShaderWgslCode =
+        `
         const pos : array<vec2<f32>, 3> = array<vec2<f32>, 3>(
         vec2<f32>(0.0, 0.5),
         vec2<f32>(-0.5, -0.5),
@@ -35,7 +35,7 @@
     `;
 
     const fragmentShaderWgslCode =
-    `
+        `
         [[location(0)]] var<out> outColor : vec4<f32>;
       
         [[stage(fragment)]]
@@ -46,22 +46,24 @@
     `;
 
     const pipeline = device.createRenderPipeline({
-        vertexStage: {
+        vertex: {
             module: device.createShaderModule({
                 code: vertexShaderWgslCode
             }),
             entryPoint: 'main'
         },
-        fragmentStage: {
+        fragment: {
             module: device.createShaderModule({
                 code: fragmentShaderWgslCode
             }),
-            entryPoint: 'main'
+            entryPoint: 'main',
+            targets: [{
+                format: swapChainFormat,
+            }]
         },
-        primitiveTopology: 'triangle-list',
-        colorStates: [{
-            format: swapChainFormat
-        }]
+        primitive: {
+            topology: 'triangle-list',
+        }
     });
 
     const commandEncoder = device.createCommandEncoder();
@@ -79,5 +81,5 @@
     passEncoder.draw(3, 1, 0, 0);
     passEncoder.endPass();
 
-    device.defaultQueue.submit([commandEncoder.finish()]);
+    device.queue.submit([commandEncoder.finish()]);
 })();
