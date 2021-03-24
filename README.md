@@ -14,9 +14,8 @@ WebGPU is a low-level API so its “Hello World!” can’t be a one-liner, neve
 
 Is it possible to simplify the code further? Teach me how! :)
 
-## Test results (2020-11-29):
-- Chrome Canary 89.0.4340.0 (64-bit) on Windows 10 - SUCCESS!
-- Firefox Nightly 85.0a1 (2020-11-29) (64-bit) on Windows 10 - FAILURE!
+## Test results (2021-03-25) ###
+- Renders properly and without warnings in _Chrome Canary v91.0.4457.2 x64 Win 10_ with _--enable-unsafe-webgpu_ flag set.
 
 ## Credits
 Code is based on https://github.com/austinEng/webgpu-samples
