@@ -1,5 +1,6 @@
 # WebGPU/WGSL Hello Triangle!
 An example of how to render a triangle with WebGPU using WebGPU Shading Language - the "Hello World!" of computer graphics.
+Details in blog post: https://en.morzel.net/post/webgpu-wgsl-hello-triangle
 
 ## What it does?
 **If your browser supports WebGPU and WGSL**, you should be able to see a gray square with a green triangle in the center. And that's it.
