@@ -19,7 +19,7 @@ Details in blog post: https://en.morzel.net/post/webgpu-wgsl-hello-triangle
 Please mind that [WebGPU](https://gpuweb.github.io/gpuweb) and [WGSL](https://gpuweb.github.io/gpuweb/wgsl.html) specs are not finalized and implementations are changing! Visit [webgpu.io](https://webgpu.io) to check current status.
 
 ## Keep it simple!
-WebGPU is a low-level API so its “Hello World!” can’t be a one-liner, nevertheless this repo is meant to be as simple as possible. Just two files: one for HTML and one for JavaScript - no Node.js, Weback etc.
+WebGPU is a low-level API so its “Hello World!” can’t be a one-liner, nevertheless this repo is meant to be as simple as possible. Just two files: one for HTML and one for JavaScript - no Node.js, Webpack etc.
 
 Is it possible to simplify the code further? Teach me how! :)
 
