@@ -1,3 +1,11 @@
+
+# REPO ARCHIVED!
+This repository is now archived as I don't have time to track WebGPU changes...
+
+Worry not :) I see that WebGPU enthusiast are starting to provide simple and updated WebGPU starters, check this one for example: https://github.com/monfera/minimal-webgpu-triangle
+
+---
+
 # WebGPU/WGSL Hello Triangle!
 An example of how to render a triangle with WebGPU using WebGPU Shading Language - the "Hello World!" of computer graphics.
 Details in blog post: https://en.morzel.net/post/webgpu-wgsl-hello-triangle
